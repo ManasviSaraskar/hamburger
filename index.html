@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Sidebar</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+header{
+    height:60px;
+    background:#2c3e50;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links li{
+    cursor:pointer;
+}
+
+
+.hamburger{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:-250px;
+    width:220px;
+    height:100vh;
+    background:#34495e;
+    padding-top:60px;
+    transition:0.3s;
+}
+
+.sidebar ul{
+    list-style:none;
+    text-align:center;
+}
+
+.sidebar li{
+    padding:15px 0;
+    color:white;
+    cursor:pointer;
+}
+
+.sidebar.active{
+    left:0;
+}
+
+/* MEDIA QUERY */
+@media(max-width:768px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hamburger{
+        display:block;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>MySite</h2>
+    <ul class="nav-links">
+        <li>Home</li>
+        <li>About</li>
+        <li>Services</li>
+        <li>Contact</li>
+    </ul>
+    <div class="hamburger">☰</div>
+</header>
+
+<div class="sidebar">
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Services</li>
+        <li>Contact</li>
+    </ul>
+</div>
+
+<script>
+const hamburger = document.querySelector(".hamburger");
+const sidebar = document.querySelector(".sidebar");
+
+hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+
+    if(sidebar.classList.contains("active")){
+        hamburger.textContent = "✖";
+    } else {
+        hamburger.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>
